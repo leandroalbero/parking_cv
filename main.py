@@ -1,8 +1,11 @@
+import xml.dom.minidom
+
 import cv2
 import numpy as np
 import neural as neur
 import csv
-
+import xml.etree.ElementTree as et
+import xml.dom.minidom as md
 
 class Parking:
     """
@@ -36,10 +39,21 @@ class Parking:
                 self.plazas.append(Plaza([x], status, len(self.plazas)))
 
     def save_state(self, name):
-        with open(name, 'w') as f:
-            write = csv.writer(f)
-            for plaza in self.plazas:
-                write.writerow([plaza.id, plaza.status] + plaza.coords)
+        root = et.Element("parking")
+        root.attrib = {"id": name}
+        for plaza in self.plazas:
+            space = et.Element("space")
+            space.attrib = {"id": str(plaza.id), "occupied": str(plaza.status)}
+            contour = et.Element("contour")
+            for coord in plaza.coords:
+                point = et.Element("point")
+                point.attrib = {"x": str(coord[0]), "y": str(coord[1])}
+                contour.append(point)
+            space.append(contour)
+            root.append(space)
+        tree = et.ElementTree(root)
+        f = open("text.xml", "wb")
+        tree.write(f)
 
     def load_state(self, name):
         with open(name, newline='') as csvfile:
@@ -150,7 +164,6 @@ def move_poly(_img, coords, square):
 
 
 if __name__ == "__main__":
-    neur.hello()
     img = cv2.imread("lot.jpg", 1)
     img_copy = cv2.imread("lot.jpg", 1)
     p1 = Parking("parking1")
