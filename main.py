@@ -7,6 +7,7 @@ import csv
 import xml.etree.ElementTree as et
 import xml.dom.minidom as md
 
+
 class Parking:
     """
     Representa el estado de un aparcamiento completo
@@ -56,19 +57,16 @@ class Parking:
         tree.write(f)
 
     def load_state(self, name):
-        with open(name, newline='') as csvfile:
-            reader = csv.reader(csvfile, delimiter=',')
-            for row in reader:
-                id_plaza = row[0]
-                if row[1] == 'True':
-                    plaza_ocupada = True
-                else:
-                    plaza_ocupada = False
-                plaza_coord = []
-                for i in range(2, len(row)):
-                    temp = (row[i].strip('][').split(','))
-                    plaza_coord.append([int(temp[0]), int(temp[1])])
-                self.plazas.append(Plaza(plaza_coord, plaza_ocupada, id_plaza))
+        parser = et.parse(name)
+        root = parser.getroot()
+        for x in root.findall("space"):
+            id_plaza = int(x.attrib.get("id"))
+            plaza_ocupada = x.attrib.get("occupied")
+            plaza_coord = []
+            contour = x.find("contour")
+            for y in contour.findall("point"):
+                plaza_coord.append([int(y.attrib.get("x")), int(y.attrib.get("y"))])
+            self.plazas.append(Plaza(plaza_coord, plaza_ocupada, id_plaza))
 
 
 class Plaza:
@@ -123,7 +121,7 @@ def draw_boxes(_img, plazas):
         return _img
     for plaza in plazas:
         np_plaza_coords = np.array(plaza.coords)
-        if plaza.status:
+        if plaza.status == "0":
             _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 0, 255), 2)
         else:
             _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 255, 0), 2)
@@ -132,11 +130,16 @@ def draw_boxes(_img, plazas):
 
 
 def extract_patches(_img, plazas):
+    path_to_folder = "plazas/"
+    estados = []
     for plaza in plazas:
         patch = move_poly(_img, plaza.coords, True)
         resized = cv2.resize(patch, (150, 150), interpolation=cv2.INTER_CUBIC)
-        cv2.imwrite("plazas/" + str(plaza.id) + ".jpg", resized)
-        print()
+        estados.append([str(plaza.id), str(plaza.status)])
+        cv2.imwrite(f"{path_to_folder}{str(plaza.id)}.jpg", resized)
+    f = open(f"{path_to_folder}tags.txt", "w")
+    f.write(estados.__str__())
+    f.close()
 
 
 def calculate_bounding_box(coords):
@@ -164,9 +167,9 @@ def move_poly(_img, coords, square):
 
 
 if __name__ == "__main__":
-    img = cv2.imread("lot.jpg", 1)
-    img_copy = cv2.imread("lot.jpg", 1)
-    p1 = Parking("parking1")
+    img = cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_08_26_22.jpg", 1)
+    img_copy = cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_08_26_22.jpg", 1)
+    p1 = Parking("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_08_26_22.xml")
     draw_boxes(img, p1.plazas)
     cv2.setMouseCallback('lines', click_event)
     cv2.waitKey(0)
