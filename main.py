@@ -1,11 +1,10 @@
+import time
 import xml.dom.minidom
-
+import os
 import cv2
 import numpy as np
-import neural as neur
 import csv
 import xml.etree.ElementTree as et
-import xml.dom.minidom as md
 
 
 class Parking:
@@ -166,11 +165,38 @@ def move_poly(_img, coords, square):
     return newimg
 
 
+def traverse_and_segment(rootDir):  # Tarda bastante, demasiadas comparaciones 154M
+    routes_jpg = []
+    routes_xml = []
+    routes = []
+    for dirName, subdirList, fileList in os.walk(rootDir):
+        for fname in fileList:
+            if str(fname).find(".xml") != -1:
+                routes_xml.append(dirName + '/' + fname)
+            elif str(fname).find(".jpg") != -1:
+                routes_jpg.append(dirName + '/' + fname)
+    for route_jpg in routes_jpg:
+        for route_xml in routes_xml:
+            xml_size = len(str(route_xml))
+            jpg_size = len(str(route_xml))
+            if str(route_jpg)[:jpg_size - 4] == str(route_xml)[:xml_size - 4]:  # Hay veces que los .jpg no tienen .xml
+                routes.append([route_jpg, route_xml])
+    print("Finished loading images...")
+    parkings = []
+    for route_xml in routes_xml:
+        parkings.append(Parking(route_xml))
+    print("Finished loading parkings")
+    pass
+
+
 if __name__ == "__main__":
-    img = cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_08_26_22.jpg", 1)
-    img_copy = cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_08_26_22.jpg", 1)
-    p1 = Parking("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_08_26_22.xml")
+    traverse_and_segment('./PKLot/PKLot')
+    """
+    img = cv2.imread("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.jpg", 1)
+    img_copy = cv2.imread("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.jpg", 1)
+    p1 = Parking("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.xml")
     draw_boxes(img, p1.plazas)
     cv2.setMouseCallback('lines', click_event)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+    """
