@@ -5,6 +5,8 @@ import cv2
 import numpy as np
 import csv
 import xml.etree.ElementTree as et
+import train
+import predict
 
 
 class Parking:
@@ -22,10 +24,19 @@ class Parking:
     insert_coord(x, status)
     """
 
-    def __init__(self, save_name=None):
+    def __init__(self, save_name=None, identifier=None, image=None):
+        self.save_name = ""
+        self.id = identifier
         self.plazas = []
+        self.image = image
         if save_name:
-            self.load_state(save_name)
+            self.save_name = save_name
+            if os.path.exists(save_name):
+                self.load_state(save_name)
+            else:
+                if image is None:
+                    image = input("Please specify a route to the image: ")
+                self.create_xml(image, save_name)
 
     def insert_coord(self, x, status):
         if len(self.plazas) == 0:
@@ -52,7 +63,7 @@ class Parking:
             space.append(contour)
             root.append(space)
         tree = et.ElementTree(root)
-        f = open("text.xml", "wb")
+        f = open(self.save_name, "wb")
         tree.write(f)
 
     def load_state(self, name):
@@ -67,11 +78,75 @@ class Parking:
                 plaza_coord.append([int(y.attrib.get("x")), int(y.attrib.get("y"))])
             self.plazas.append(Plaza(plaza_coord, plaza_ocupada, id_plaza))
 
+    def extract_patches(self, _img, plazas, savename=None, folder=None):
+        if folder is None:
+            path_to_folder = "temp/"
+            for root, dirs, files in os.walk(path_to_folder):
+                for file in files:
+                    os.remove(os.path.join(root, file))
+        else:
+            path_to_folder = folder
+        estados = []
+        for plaza in plazas:
+            if len(plaza.coords) == 0:
+                break
+            patch = plaza.move_poly(_img, True)
+            resized = cv2.resize(patch, (150, 150), interpolation=cv2.INTER_CUBIC)
+            estados.append([str(plaza.id), str(plaza.status)])
+            cv2.imwrite(f"{path_to_folder}{str(savename)}_{str(plaza.id)}-{str(plaza.status)}.jpg", resized)
+
+    def click_event(self, event, x, y, z, t):
+        if event == cv2.EVENT_LBUTTONDOWN:
+            print(x, ' ', y)
+            c1 = [x, y]
+            self.insert_coord(c1, True)
+        if event == cv2.EVENT_RBUTTONDOWN:
+            print(x, ' ', y)
+            c1 = [x, y]
+            self.insert_coord(c1, False)
+        if event == cv2.EVENT_MBUTTONDOWN:
+            print("Terminado")
+            self.extract_patches(cv2.imread(self.image, 1), self.plazas)
+            self.draw_boxes(cv2.imread(self.image, 1))
+            self.save_state(self.save_name)
+
+    def draw_boxes(self, _img=None):
+        if _img is None:
+            _img = cv2.imread(self.image)
+        if len(self.plazas) == 0:
+            cv2.imshow('lines', _img)
+            return _img
+        for plaza in self.plazas:
+            np_plaza_coords = np.array(plaza.coords)
+            if plaza.status == "0":
+                _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 0, 255), 2)
+            else:
+                _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 255, 0), 2)
+        cv2.imshow('lines', _img)
+        return _img
+
+    def update_state_from_photo(self, route_to_img):
+        self.image = route_to_img
+        img = cv2.imread(route_to_img, 1)
+        self.extract_patches(img, self.plazas, savename=self.id)
+        results = predict.predict_image("temp/")
+
+        pass
+
+    def create_xml(self, image, savefile):
+        img = cv2.imread(image, 1)
+        img_copy = cv2.imread(image, 1)
+        self.draw_boxes(img)
+        cv2.setMouseCallback('lines', self.click_event)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        pass
+
 
 class Plaza:
     """
     Representa el estado de una plaza de aparcamiento
-
+    723790 plazas en PKlot (~4GB)
     ...
 
     Atributos
@@ -97,106 +172,59 @@ class Plaza:
     def get_coord(self):
         return self.coords
 
+    def calculate_bounding_box(self):
+        try:
+            minx = np.min(self.coords, axis=0)[0]
+            miny = np.min(self.coords, axis=0)[1]
+            maxx = np.max(self.coords, axis=0)[0]
+            maxy = np.max(self.coords, axis=0)[1]
+            return [maxy - miny, maxx - minx]
+        except:
+            return [1, 1]
 
-def click_event(event, x, y, z, t):
-    if event == cv2.EVENT_LBUTTONDOWN:
-        print(x, ' ', y)
-        c1 = [x, y]
-        p1.insert_coord(c1, True)
-    if event == cv2.EVENT_RBUTTONDOWN:
-        print(x, ' ', y)
-        c1 = [x, y]
-        p1.insert_coord(c1, False)
-    if event == cv2.EVENT_MBUTTONDOWN:
-        print("Terminado")
-        extract_patches(img_copy, p1.plazas)
-        draw_boxes(img, p1.plazas)
-        p1.save_state("parking1")
-
-
-def draw_boxes(_img, plazas):
-    if len(plazas) == 0:
-        cv2.imshow('lines', _img)
-        return _img
-    for plaza in plazas:
-        np_plaza_coords = np.array(plaza.coords)
-        if plaza.status == "0":
-            _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 0, 255), 2)
+    def move_poly(self, _img, square):
+        bound_box = self.calculate_bounding_box()
+        offset = np.min(self.coords, axis=0)
+        mask = np.zeros(np.array(_img.shape), dtype=np.uint8)
+        cv2.fillPoly(mask, pts=[np.array(self.coords)], color=(1, 1, 1))
+        if square:
+            bigger_side = np.max(bound_box)
+            newimg = np.zeros([bigger_side, bigger_side, 3], dtype=np.uint8)
         else:
-            _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 255, 0), 2)
-    cv2.imshow('lines', img)
-    return img
+            newimg = np.zeros([bound_box[0], bound_box[1], 3], dtype=np.uint8)
+        for i in range(bound_box[0]):
+            for j in range(bound_box[1]):
+                newimg[i][j] = mask[i + offset[1]][j + offset[0]] * _img[i + offset[1]][j + offset[0]]
+        return newimg
 
 
-def extract_patches(_img, plazas):
-    path_to_folder = "plazas/"
-    estados = []
-    for plaza in plazas:
-        patch = move_poly(_img, plaza.coords, True)
-        resized = cv2.resize(patch, (150, 150), interpolation=cv2.INTER_CUBIC)
-        estados.append([str(plaza.id), str(plaza.status)])
-        cv2.imwrite(f"{path_to_folder}{str(plaza.id)}.jpg", resized)
-    f = open(f"{path_to_folder}tags.txt", "w")
-    f.write(estados.__str__())
-    f.close()
-
-
-def calculate_bounding_box(coords):
-    minx = np.min(coords, axis=0)[0]
-    miny = np.min(coords, axis=0)[1]
-    maxx = np.max(coords, axis=0)[0]
-    maxy = np.max(coords, axis=0)[1]
-    return [maxy - miny, maxx - minx]
-
-
-def move_poly(_img, coords, square):
-    bound_box = calculate_bounding_box(coords)
-    offset = np.min(coords, axis=0)
-    mask = np.zeros(np.array(_img.shape), dtype=np.uint8)
-    cv2.fillPoly(mask, pts=[np.array(coords)], color=(1, 1, 1))
-    if square:
-        bigger_side = np.max(bound_box)
-        newimg = np.zeros([bigger_side, bigger_side, 3], dtype=np.uint8)
-    else:
-        newimg = np.zeros([bound_box[0], bound_box[1], 3], dtype=np.uint8)
-    for i in range(bound_box[0]):
-        for j in range(bound_box[1]):
-            newimg[i][j] = mask[i + offset[1]][j + offset[0]] * _img[i + offset[1]][j + offset[0]]
-    return newimg
-
-
-def traverse_and_segment(rootDir):  # Tarda bastante, demasiadas comparaciones 154M
-    routes_jpg = []
+def traverse_and_segment(rootDir):
+    count = 0
     routes_xml = []
-    routes = []
     for dirName, subdirList, fileList in os.walk(rootDir):
         for fname in fileList:
             if str(fname).find(".xml") != -1:
                 routes_xml.append(dirName + '/' + fname)
-            elif str(fname).find(".jpg") != -1:
-                routes_jpg.append(dirName + '/' + fname)
-    for route_jpg in routes_jpg:
-        for route_xml in routes_xml:
-            xml_size = len(str(route_xml))
-            jpg_size = len(str(route_xml))
-            if str(route_jpg)[:jpg_size - 4] == str(route_xml)[:xml_size - 4]:  # Hay veces que los .jpg no tienen .xml
-                routes.append([route_jpg, route_xml])
-    print("Finished loading images...")
     parkings = []
     for route_xml in routes_xml:
-        parkings.append(Parking(route_xml))
-    print("Finished loading parkings")
-    pass
+        parkings.append(Parking(route_xml, count))
+        count += 1
+    print(f"Finished loading parkings: {len(parkings)}")
+    for parking in parkings:
+        ruta_img = str(parking.save_name)[:len(str(parking.save_name)) - 4] + ".jpg"
+        img = cv2.imread(ruta_img, 1)
+        if img is None:
+            break
+        parking.extract_patches(img, parking.plazas, savename=parking.id, folder="plazas3")
 
 
 if __name__ == "__main__":
-    traverse_and_segment('./PKLot/PKLot')
-    """
-    img = cv2.imread("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.jpg", 1)
-    img_copy = cv2.imread("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.jpg", 1)
-    p1 = Parking("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.xml")
-    draw_boxes(img, p1.plazas)
-    cv2.setMouseCallback('lines', click_event)
+    # traverse_and_segment('./PKLot/PKLot')
+    # train.hello()
+    # predict.hello()
+    # p1 = Parking("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_10_05_57.xml")
+    # p1.draw_boxes(cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_10_05_57.jpg",1), p1.plazas)
+    p1 = Parking("PKLot/PKLot/PUCPR/Sunny/2012-10-09/2012-10-09_08_23_43.xml", image="PKLot/PKLot/PUCPR/Sunny/2012-10-09/2012-10-09_08_23_43.jpg")
+    p1.update_state_from_photo("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.jpg")
+    p1.draw_boxes()
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    """
