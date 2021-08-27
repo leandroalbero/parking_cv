@@ -40,14 +40,14 @@ class Parking:
 
     def insert_coord(self, x, status):
         if len(self.plazas) == 0:
-            self.plazas.append(Plaza([x], status, len(self.plazas)))
+            self.plazas.append(_Plaza([x], status, len(self.plazas)))
         else:
             if len(self.plazas[-1].coords) < 4:
                 self.plazas[-1].coords.append(x)
             else:
                 print("Insertando plaza")
                 print(self.plazas[-1].coords)
-                self.plazas.append(Plaza([x], status, len(self.plazas)))
+                self.plazas.append(_Plaza([x], status, len(self.plazas)))
 
     def save_state(self, name):
         root = et.Element("parking")
@@ -76,7 +76,7 @@ class Parking:
             contour = x.find("contour")
             for y in contour.findall("point"):
                 plaza_coord.append([int(y.attrib.get("x")), int(y.attrib.get("y"))])
-            self.plazas.append(Plaza(plaza_coord, plaza_ocupada, id_plaza))
+            self.plazas.append(_Plaza(plaza_coord, plaza_ocupada, id_plaza))
 
     def extract_patches(self, _img, plazas, savename=None, folder=None):
         if folder is None:
@@ -119,9 +119,9 @@ class Parking:
         for plaza in self.plazas:
             np_plaza_coords = np.array(plaza.coords)
             if plaza.status == "0":
-                _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 0, 255), 2)
-            else:
                 _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 255, 0), 2)
+            else:
+                _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 0, 255), 2)
         cv2.imshow('lines', _img)
         return _img
 
@@ -130,7 +130,9 @@ class Parking:
         img = cv2.imread(route_to_img, 1)
         self.extract_patches(img, self.plazas, savename=self.id)
         results = predict.predict_image("temp/")
-
+        header = list(results.keys())[0].split('_')[0]
+        for plaza in self.plazas:
+            plaza.status = str(results[f"{header}_{plaza.id}-{plaza.status}.jpg"])
         pass
 
     def create_xml(self, image, savefile):
@@ -143,7 +145,7 @@ class Parking:
         pass
 
 
-class Plaza:
+class _Plaza:
     """
     Representa el estado de una plaza de aparcamiento
     723790 plazas en PKlot (~4GB)
@@ -205,6 +207,7 @@ def traverse_and_segment(rootDir):
         for fname in fileList:
             if str(fname).find(".xml") != -1:
                 routes_xml.append(dirName + '/' + fname)
+
     parkings = []
     for route_xml in routes_xml:
         parkings.append(Parking(route_xml, count))
@@ -215,16 +218,18 @@ def traverse_and_segment(rootDir):
         img = cv2.imread(ruta_img, 1)
         if img is None:
             break
-        parking.extract_patches(img, parking.plazas, savename=parking.id, folder="plazas3")
+        parking.extract_patches(img, parking.plazas, savename=parking.id, folder="plazas/")
 
 
 if __name__ == "__main__":
-    # traverse_and_segment('./PKLot/PKLot')
-    # train.hello()
-    # predict.hello()
+    #traverse_and_segment('./PKLot/PKLot')
+    #train.hello()
+    #predict.hello()
     # p1 = Parking("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_10_05_57.xml")
     # p1.draw_boxes(cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_10_05_57.jpg",1), p1.plazas)
-    p1 = Parking("PKLot/PKLot/PUCPR/Sunny/2012-10-09/2012-10-09_08_23_43.xml", image="PKLot/PKLot/PUCPR/Sunny/2012-10-09/2012-10-09_08_23_43.jpg")
-    p1.update_state_from_photo("PKLot/PKLot/PUCPR/Sunny/2012-09-11/2012-09-11_15_16_58.jpg")
+    #p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-02/2013-03-02_06_45_00.xml", image="PKLot/PKLot/UFPR05/Sunny/2013-03-02/2013-03-02_06_45_00.jpg")
+    #p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-13/2013-03-13_09_25_04.jpg")
+    p1 = Parking("plot", image="plot.jpg")
+    p1.update_state_from_photo("plot.jpg")
     p1.draw_boxes()
     cv2.waitKey(0)
