@@ -1,5 +1,3 @@
-import time
-import xml.dom.minidom
 import os
 import cv2
 import numpy as np
@@ -7,7 +5,6 @@ import csv
 import xml.etree.ElementTree as et
 import train
 import predict
-
 
 class Parking:
     """
@@ -17,11 +14,23 @@ class Parking:
 
     Atributos
     _________
-    plazas : Plaza
+    save_name : Nombre del archivo .xml en el que se guardará el estado del parking (coordenadas, id y estado).
+    id:         Identificador numérico del parking (Se usa para la función que escanea todos los parkings y extrae
+    todas sus plazas en recuadros de 150x150.
+    plazas :    Contenedor de todas las plazas en el aparcamiento.
+    image :     Imagen con la que se ha calculado el estado actual del parking.
+
 
     Métodos
     _______
     insert_coord(x, status)
+    save_state(name)
+    load_state(name)
+    extract_patches(_img, plazas, savename=None, folder=None)
+    click_event(self, event, x, y, z, t):
+    draw_boxes(self, _img=None):
+    update_state_from_photo(self, route_to_img):
+    create_xml(self, image, savefile):
     """
 
     def __init__(self, save_name=None, identifier=None, image=None):
@@ -148,16 +157,22 @@ class Parking:
 class _Plaza:
     """
     Representa el estado de una plaza de aparcamiento
-    723790 plazas en PKlot (~4GB)
+    723790 plazas en PKlot (~4GB a 150x150)
     ...
 
     Atributos
     _________
-
+    coords: Coordenadas de los 4 puntos que conforman una plaza.
+    status: Estado de la plaza (0: vacío, 1: lleno).
+    id:     Identificador numérico de la plaza
 
     Métodos
     _______
-
+    change_state(self, status):
+    add_coord(self, coordinates):
+    get_coord(self):
+    calculate_bounding_box(self):
+    move_poly(self, _img, square):
     """
 
     def __init__(self, coords, status, num):
@@ -222,14 +237,9 @@ def traverse_and_segment(rootDir):
 
 
 if __name__ == "__main__":
-    #traverse_and_segment('./PKLot/PKLot')
-    #train.hello()
-    #predict.hello()
-    # p1 = Parking("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_10_05_57.xml")
-    # p1.draw_boxes(cv2.imread("PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_10_05_57.jpg",1), p1.plazas)
-    #p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-02/2013-03-02_06_45_00.xml", image="PKLot/PKLot/UFPR05/Sunny/2013-03-02/2013-03-02_06_45_00.jpg")
-    #p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-13/2013-03-13_09_25_04.jpg")
-    p1 = Parking("plot", image="plot.jpg")
-    p1.update_state_from_photo("plot.jpg")
+    # traverse_and_segment('./PKLot/PKLot')
+    # train.start()
+    p1 = Parking("PKLot/PKLot/UFPR05/Rainy/2013-03-13/2013-03-13_13_05_08.xml")
+    p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_08_40_03.jpg")
     p1.draw_boxes()
     cv2.waitKey(0)

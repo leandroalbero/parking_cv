@@ -12,7 +12,7 @@ Trains an Xception neural network
 """
 
 
-def hello():
+def start():
     print("Number of cpus available: ", len(tf.config.experimental.list_physical_devices('CPU')))
     image_width = 150
     image_height = 150
