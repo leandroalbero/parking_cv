@@ -124,7 +124,7 @@ class Parking:
         if _img is None:
             _img = cv2.imread(self.image)
         if len(self.plazas) == 0:
-            cv2.imshow('lines', _img)
+            cv2.imshow('parking_cv', _img)
             return _img
         for plaza in self.plazas:
             np_plaza_coords = np.array(plaza.coords)
@@ -145,7 +145,7 @@ class Parking:
             plaza.status = str(results[f"{header}_{plaza.id}-{plaza.status}.jpg"])
         pass
 
-    def create_xml(self, image, savefile):
+    def create_xml(self, image):
         img = cv2.imread(image, 1)
         img_copy = cv2.imread(image, 1)
         self.draw_boxes(img)
@@ -153,7 +153,6 @@ class Parking:
         cv2.waitKey(0)
         cv2.destroyAllWindows()
         pass
-
 
     def print_overview(self):
         plazas_ocupadas = 0
@@ -254,7 +253,8 @@ def traverse_and_segment(root_dir):
 if __name__ == "__main__":
     # traverse_and_segment('./PKLot/PKLot')
     # train.start()
-    p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml", image="PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.jpg")
+    p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml", image="PKLot/PKLot/UFPR05/Sunny/2013"
+                                                                                      "-03-12/2013-03-12_07_30_01.jpg")
     p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-06/2013-03-06_07_45_02.jpg")
     p1.draw_boxes()
     p1.print_overview()

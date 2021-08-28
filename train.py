@@ -19,7 +19,7 @@ def start():
     image_size = (image_width, image_height)
     image_channels = 3
 
-    filenames = os.listdir("/Users/leandroalbero/Documents/plazas2/")
+    filenames = os.listdir("plazas/")
     categories = []
     for f_name in filenames:
         category = f_name.split('-')[1][0]
