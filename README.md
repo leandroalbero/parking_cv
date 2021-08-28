@@ -62,4 +62,8 @@ This will ONLY update the instance status, not the file. To update the contents 
 ```
 p1.save_state("demo1.xml")
 ```
-Or issue the following command to show the image
+Or issue the following commands to show the image (saves status when pressing any key):
+```
+p1.draw_boxes()
+cv2.waitKey(0)
+```
