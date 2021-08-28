@@ -55,10 +55,14 @@ p1 = Parking("PKLot/PKLot/UFPR05/Rainy/2013-03-13/2013-03-13_13_05_08.xml", imag
 ## Update an existing parking lot status with a new image 
 To update all of the parking spots on a parking lot we will need to first load the parking lot and issue the 
 update_state_from_photo command.
+This command internally calls a routine that splits the image into the parking spots defined in the .xml file and saves
+their 150x150 crop into a 'temp' folder:
+![demo](screenshots/img_1.png)
+Once these files have been created, it feeds them into the DNN and infers their status.
 ```
 p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_08_40_03.jpg")
 ```
-This will ONLY update the instance status, not the file. To update the contents of the .xml file we will need to:
+This will ONLY update the running instance's status, not the file. To update the contents of the .xml file we will need to:
 ```
 p1.save_state("demo1.xml")
 ```

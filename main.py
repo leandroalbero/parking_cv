@@ -254,8 +254,8 @@ def traverse_and_segment(root_dir):
 if __name__ == "__main__":
     # traverse_and_segment('./PKLot/PKLot')
     # train.start()
-    p1 = Parking("demo1.xml", image="PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.jpg")
-    p1.update_state_from_photo("PKLot/PKLot/UFPR05/Rainy/2013-03-16/2013-03-16_16_40_12.jpg")
+    p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml", image="PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.jpg")
+    p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-06/2013-03-06_07_45_02.jpg")
     p1.draw_boxes()
     p1.print_overview()
     cv2.waitKey(0)
