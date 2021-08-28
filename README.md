@@ -8,11 +8,17 @@ from a parking lot camera. It also uses OpenCV to handle image processing and di
 pip3 install -r requirements.txt
 ```
 ## How to train the DNN
-First we need to traverse all the folders inside the PKLot database 
-(https://web.inf.ufpr.br/vri/databases/parking-lot-database/) by using the
-```traverse_and_segment('route_to_PKLot_root')```. 
+First we need to traverse all the folders inside the PKLot database
+(https://web.inf.ufpr.br/vri/databases/parking-lot-database/) to generate the 150x150 crops needed to train the DNN:
 
-This will extract all the parking spaces inside each of the pictures and fit them on a 150x150 px frames.
+
+```traverse_and_segment('route_to_PKLot_root')``` 
+
+This will extract all the parking spaces inside each of the pictures and fit them onto frames like in the picture below:
+![demo](screenshots/img_2.png)
+Each file has the following naming scheme: `parking_lot_id`_`place_id`-`status`.jpg and it is stored inside the "plazas"
+folder.
+
 Once finished we will need to train the neural network on the pictures we have just extracted (723790 parking spots), 
 we do so by issuing the following command:
 ```
@@ -25,7 +31,7 @@ content root:
 https://drive.google.com/file/d/1ubyPzxLrnnSU6aR1Tmo8UcY2Wo4kDmIK/view?usp=sharing
 
 
-## Create a parking lot from an image
+## Create a parking lot instance from an image
 If we don't have the .xml file for the parking lot we are going to use we can generate one by issuing the following
 command:
 ```
@@ -60,8 +66,8 @@ p1 = Parking("PKLot/PKLot/UFPR05/Rainy/2013-03-13/2013-03-13_13_05_08.xml", imag
 To update all of the parking spots on a parking lot we will need to first load the parking lot and issue the 
 update_state_from_photo command.
 This command internally calls a routine that splits the image into the parking spots defined in the .xml file and saves
-their 150x150 crop into a 'temp' folder:
-![demo](screenshots/img_1.png)
+their 150x150 crop into a 'temp' folder.
+
 Once these files have been created, it feeds them into the DNN and infers their status.
 ```
 p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_08_40_03.jpg")
