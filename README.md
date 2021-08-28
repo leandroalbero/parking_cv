@@ -1,8 +1,12 @@
 # parking_cv
-Parking_cv is a machine learning project that uses an Xception DNN on Keras and Tensorflow to classify images extracted 
+Parking_cv is a machine learning project that uses a Mini Xception DNN on Keras and Tensorflow to classify images extracted 
 from a parking lot camera. It also uses OpenCV to handle image processing and display. 
 ![demo](screenshots/img.png)
 
+## Install requirements
+```
+pip3 install -r requirements.txt
+```
 ## How to train the DNN
 First we need to traverse all the folders inside the PKLot database 
 (https://web.inf.ufpr.br/vri/databases/parking-lot-database/) by using the

@@ -214,7 +214,7 @@ class _Plaza:
         except:
             return [1, 1]
 
-    def move_poly(self, _img, square):
+    def move_poly(self, _img, square):  # Creates a new crop from the main image, it can either be squared or not
         bound_box = self.calculate_bounding_box()
         offset = np.min(self.coords, axis=0)
         mask = np.zeros(np.array(_img.shape), dtype=np.uint8)
