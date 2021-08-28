@@ -6,6 +6,7 @@ import xml.etree.ElementTree as et
 import train
 import predict
 
+
 class Parking:
     """
     Representa el estado de un aparcamiento completo
@@ -215,10 +216,10 @@ class _Plaza:
         return newimg
 
 
-def traverse_and_segment(rootDir):
+def traverse_and_segment(root_dir):
     count = 0
     routes_xml = []
-    for dirName, subdirList, fileList in os.walk(rootDir):
+    for dirName, subdirList, fileList in os.walk(root_dir):
         for fname in fileList:
             if str(fname).find(".xml") != -1:
                 routes_xml.append(dirName + '/' + fname)
