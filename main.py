@@ -155,6 +155,20 @@ class Parking:
         pass
 
 
+    def print_overview(self):
+        plazas_ocupadas = 0
+        plazas_vacias = 0
+        estados = []
+        for plaza in self.plazas:
+            estados.append(plaza.status)
+            if plaza.status == '1':
+                plazas_ocupadas += 1
+            else:
+                plazas_vacias += 1
+        print(f"Plazas ocupadas: {plazas_ocupadas}, Plazas vacías: {plazas_vacias}, Plazas totales: {len(self.plazas)}")
+        print(estados)
+
+
 class _Plaza:
     """
     Representa el estado de una plaza de aparcamiento
@@ -240,7 +254,8 @@ def traverse_and_segment(root_dir):
 if __name__ == "__main__":
     # traverse_and_segment('./PKLot/PKLot')
     # train.start()
-    p1 = Parking("PKLot/PKLot/UFPR05/Rainy/2013-03-13/2013-03-13_13_05_08.xml")
-    p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_08_40_03.jpg")
+    p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml", image="PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.jpg")
+    p1.update_state_from_photo("PKLot/PKLot/UFPR05/Rainy/2013-03-16/2013-03-16_16_40_12.jpg")
     p1.draw_boxes()
+    #p1.print_overview()
     cv2.waitKey(0)
