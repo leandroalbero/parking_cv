@@ -4,8 +4,20 @@ from PIL import Image
 import numpy as np
 
 
-def predict_image(path):
-    model = tensorflow.keras.models.load_model('model3.h5')
+def predict_patch(path, model=None):
+    if model is None:
+        model = tensorflow.keras.models.load_model('model3.h5')
+    im = Image.open(path)
+    im = im.resize((150, 150))
+    im = np.expand_dims(im, axis=0)
+    im = np.array(im)
+    im = im / 255
+    return model.predict(im)
+
+
+def predict_image(path, model=None):
+    if model is None:
+        model = tensorflow.keras.models.load_model('model3.h5')
     files = os.listdir(path)
     predictions = {}
     for file in files:

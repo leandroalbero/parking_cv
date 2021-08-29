@@ -12,14 +12,21 @@ Trains an Xception neural network
 """
 
 
-def start():
+def start(path=None, model_name=None, epochs=None):
+    if path is None:
+        path = "plazas/"
+    if model_name is None:
+        model_name = "model.h5"
+    if epochs is None:
+        epochs = 10
+
     print("Number of cpus available: ", len(tf.config.experimental.list_physical_devices('CPU')))
     image_width = 150
     image_height = 150
     image_size = (image_width, image_height)
     image_channels = 3
 
-    filenames = os.listdir("plazas/")
+    filenames = os.listdir(path)
     categories = []
     for f_name in filenames:
         category = f_name.split('-')[1][0]
@@ -79,7 +86,7 @@ def start():
                                        )
 
     train_generator = train_datagen.flow_from_dataframe(train_df,
-                                                        "/Users/leandroalbero/Documents/plazas2/", x_col='filename', y_col='category',
+                                                        path, x_col='filename', y_col='category',
                                                         target_size=image_size,
                                                         class_mode='categorical',
                                                         batch_size=batch_size)
@@ -87,7 +94,7 @@ def start():
     validation_datagen = ImageDataGenerator(rescale=1. / 255)
     validation_generator = validation_datagen.flow_from_dataframe(
         validate_df,
-        "/Users/leandroalbero/Documents/plazas2/",
+        path,
         x_col='filename',
         y_col='category',
         target_size=image_size,
@@ -95,11 +102,9 @@ def start():
         batch_size=batch_size
     )
 
-    epochs = 10
-
     model.fit(train_generator, epochs=epochs,
               validation_data=validation_generator,
               validation_steps=total_validate // batch_size,
               steps_per_epoch=total_train // batch_size,
               callbacks=callbacks)
-    model.save("model3.h5")
+    model.save(model_name)
