@@ -1,3 +1,4 @@
+import argparse
 import os
 import cv2
 import numpy as np
@@ -46,7 +47,7 @@ class Parking:
             else:
                 if image is None:
                     image = input("Please specify a route to the image: ")
-                self.create_xml(image, save_name)
+                self.create_xml(image)
 
     def insert_coord(self, x, status):
         if len(self.plazas) == 0:
@@ -132,7 +133,7 @@ class Parking:
                 _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 255, 0), 2)
             else:
                 _img = cv2.polylines(_img, np.int32([np_plaza_coords]), True, (0, 0, 255), 2)
-        cv2.imshow('lines', _img)
+        cv2.imshow('parking_cv', _img)
         return _img
 
     def update_state_from_photo(self, route_to_img):
@@ -147,25 +148,27 @@ class Parking:
 
     def create_xml(self, image):
         img = cv2.imread(image, 1)
-        img_copy = cv2.imread(image, 1)
         self.draw_boxes(img)
-        cv2.setMouseCallback('lines', self.click_event)
+        cv2.setMouseCallback('parking_cv', self.click_event)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
         pass
 
-    def print_overview(self):
-        plazas_ocupadas = 0
-        plazas_vacias = 0
+    def get_status(self):
         estados = []
         for plaza in self.plazas:
             estados.append(plaza.status)
+        return estados
+
+    def print_overview(self):
+        plazas_ocupadas = 0
+        plazas_vacias = 0
+        for plaza in self.plazas:
             if plaza.status == '1':
                 plazas_ocupadas += 1
             else:
                 plazas_vacias += 1
         print(f"Plazas ocupadas: {plazas_ocupadas}, Plazas vacías: {plazas_vacias}, Plazas totales: {len(self.plazas)}")
-        print(estados)
 
 
 class _Plaza:
@@ -250,12 +253,43 @@ def traverse_and_segment(root_dir):
         parking.extract_patches(img, parking.plazas, savename=parking.id, folder="plazas/")
 
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--mode', type=str, default='image', help='image, train or segment', required=True)
+    parser.add_argument('--image', type=str, help='Route to the image')
+    parser.add_argument('--parking', type=str, help='Route to the parking .xml containing state')
+    parser.add_argument('--model', type=str, help='Route to DNN model.h5')
+    parser.add_argument('--raw_dataset', type=str, default='./PKLot/PKLot', help='Route to the training dataset')
+    args = parser.parse_args()
+    return args
+
+
+def main():
+    args = parse_args()
+    if args.mode == "image":
+        p1 = Parking(args.parking, image=args.image)
+        p1.update_state_from_photo(args.image)
+        p1.draw_boxes()
+        p1.print_overview()
+        cv2.waitKey(0)
+    elif args.mode == "train":
+        train.start()
+    elif args.mode == "segment":
+        traverse_and_segment(args.raw_dataset)
+    elif args.mode == "create":
+        p1 = Parking(args.parking, image=args.image)
+        #p1.save_state(args.parking)
+
+
 if __name__ == "__main__":
+    main()  # Remove this line if you want to disable input args
+
     # traverse_and_segment('./PKLot/PKLot')
     # train.start()
-    p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml", image="PKLot/PKLot/UFPR05/Sunny/2013"
-                                                                                      "-03-12/2013-03-12_07_30_01.jpg")
-    p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-06/2013-03-06_07_45_02.jpg")
-    p1.draw_boxes()
-    p1.print_overview()
-    cv2.waitKey(0)
+    ###
+    # p1 = Parking("PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml", image="PKLot/PKLot/UFPR05/Sunny/2013"
+    #                                                                                  "-03-12/2013-03-12_07_30_01.jpg")
+    # p1.update_state_from_photo("PKLot/PKLot/UFPR05/Sunny/2013-03-06/2013-03-06_07_45_02.jpg")
+    # p1.draw_boxes()
+    # p1.print_overview()
+    # cv2.waitKey(0)

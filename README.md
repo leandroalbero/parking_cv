@@ -1,12 +1,48 @@
 # parking_cv
 Parking_cv is a machine learning project that uses a Mini Xception DNN on Keras and Tensorflow to classify images extracted 
 from a parking lot camera. It also uses OpenCV to handle image processing and display. 
+
+For more info please check the GitHub Wiki.
 ![demo](screenshots/img.png)
 
 ## Install requirements
 ```
 pip3 install -r requirements.txt
 ```
+
+## Usage
+
+You can either use input arguments to the program or disable input arguments and use methods by yourself as explained
+in next sections.
+```
+usage: main.py [-h] --mode MODE [--image IMAGE] [--parking PARKING] [--model MODEL] [--train_dataset TRAIN_DATASET]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --mode MODE           image, train or segment
+  --image IMAGE         Route to the image
+  --parking PARKING     Route to the parking .xml containing state
+  --model MODEL         Route to DNN model.h5
+  --raw_dataset RAW_DATASET
+                        Route to the whole dataset (PKLot without segmenting)
+```
+For example, if you want to **extract all the patches from the PKLot database** to later train the DNN:
+```
+python3 main.py --mode segment --raw_dataset ./PKLot/PKLot
+```
+Train a DNN
+```
+python3 main.py --mode train
+```
+Load a parking lot image and infer its status
+```
+python3 main.py --mode image --image PKLot/PKLot/UFPR05/Rainy/2013-04-12/2013-04-12_17_40_12.jpg --parking PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml
+```
+Create a new parking lot from an image and set its parking spot coordinates
+```
+python3 main.py --mode create --image PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_06_05_16.jpg --parking demo1.xml
+```
+
 ## How to train the DNN
 First we need to traverse all the folders inside the PKLot database
 (https://web.inf.ufpr.br/vri/databases/parking-lot-database/) to generate the 150x150 crops needed to train the DNN:
@@ -81,3 +117,32 @@ Or issue the following commands to show the image (saves status when pressing an
 p1.draw_boxes()
 cv2.waitKey(0)
 ```
+## Folder structure
+```
+|––– PKLot                  # Dataset used to train DNN with +95% accuracy
+     |––– PKLot
+          |––– PUCPR
+               |––– Cloudy
+                    |––– 2012-09-12
+                        |––– 2012-09-12_06_05_16.jpg
+                        |––– 2012-09-12_06_05_16.xml
+                        ...
+                    ...
+               |––– Rainy
+               |––– Sunny
+          |––– UFPR04
+                ...
+          |––– UFPR05
+                ...
+|––– plazas                 # Where 150x150 px patches are saved after calling traverse_and_segment()
+|––– temp                   # Contains patches used by update_state_from_photo()
+|––– demo1.xml              # Sample of a file containing whole parking status
+|––– main.py
+|––– predict.py             # Code to predict either by whole parking (taking input from "./temp" folder) or by patch
+|––– train.py               # Mini XCeption implementation
+```
+## References
+Parking Lot Database [https://web.inf.ufpr.br/vri/databases/parking-lot-database/](https://web.inf.ufpr.br/vri/databases/parking-lot-database/)
+
+PKLot - A robust dataset for parking lot classification [https://www.inf.ufpr.br/lesoliveira/download/pklot-readme.pdf](https://www.inf.ufpr.br/lesoliveira/download/pklot-readme.pdf)
+ ...
