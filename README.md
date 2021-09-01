@@ -135,6 +135,7 @@ cv2.waitKey(0)
           |––– UFPR05
                 ...
 |––– plazas                 # Where 150x150 px patches are saved after calling traverse_and_segment()
+|––– samples                # Contains samples of the PKLot dataset
 |––– temp                   # Contains patches used by update_state_from_photo()
 |––– demo1.xml              # Sample of a file containing whole parking status
 |––– main.py

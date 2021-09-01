@@ -1,0 +1,1302 @@
+<parking id="pucpr">
+  <space id="1" occupied="1">
+    <rotatedRect>
+      <center x="300" y="207" />
+      <size w="55" h="32" />
+      <angle d="-74" />
+    </rotatedRect>
+    <contour>
+      <point x="278" y="230" />
+      <point x="290" y="186" />
+      <point x="324" y="185" />
+      <point x="308" y="230" />
+    </contour>
+  </space>
+  <space id="2" occupied="1">
+    <rotatedRect>
+      <center x="332" y="209" />
+      <size w="56" h="33" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="325" y="185" />
+      <point x="355" y="185" />
+      <point x="344" y="233" />
+      <point x="310" y="233" />
+    </contour>
+  </space>
+  <space id="3" occupied="1">
+    <rotatedRect>
+      <center x="366" y="208" />
+      <size w="52" h="32" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="355" y="185" />
+      <point x="388" y="186" />
+      <point x="374" y="233" />
+      <point x="345" y="230" />
+    </contour>
+  </space>
+  <space id="4" occupied="1">
+    <rotatedRect>
+      <center x="398" y="207" />
+      <size w="54" h="36" />
+      <angle d="-79" />
+    </rotatedRect>
+    <contour>
+      <point x="389" y="185" />
+      <point x="421" y="184" />
+      <point x="412" y="232" />
+      <point x="375" y="231" />
+    </contour>
+  </space>
+  <space id="5" occupied="1">
+    <rotatedRect>
+      <center x="430" y="210" />
+      <size w="50" h="31" />
+      <angle d="-75" />
+    </rotatedRect>
+    <contour>
+      <point x="421" y="187" />
+      <point x="452" y="190" />
+      <point x="441" y="232" />
+      <point x="409" y="231" />
+    </contour>
+  </space>
+  <space id="6" occupied="1">
+    <rotatedRect>
+      <center x="482" y="208" />
+      <size w="49" h="32" />
+      <angle d="-78" />
+    </rotatedRect>
+    <contour>
+      <point x="470" y="184" />
+      <point x="503" y="187" />
+      <point x="492" y="230" />
+      <point x="461" y="229" />
+    </contour>
+  </space>
+  <space id="7" occupied="1">
+    <rotatedRect>
+      <center x="517" y="208" />
+      <size w="43" h="30" />
+      <angle d="-83" />
+    </rotatedRect>
+    <contour>
+      <point x="505" y="186" />
+      <point x="535" y="188" />
+      <point x="530" y="229" />
+      <point x="500" y="228" />
+    </contour>
+  </space>
+  <space id="8" occupied="1">
+    <rotatedRect>
+      <center x="550" y="209" />
+      <size w="48" h="28" />
+      <angle d="-85" />
+    </rotatedRect>
+    <contour>
+      <point x="538" y="186" />
+      <point x="567" y="186" />
+      <point x="562" y="232" />
+      <point x="534" y="232" />
+    </contour>
+  </space>
+  <space id="9" occupied="1">
+    <rotatedRect>
+      <center x="582" y="207" />
+      <size w="47" h="31" />
+      <angle d="-87" />
+    </rotatedRect>
+    <contour>
+      <point x="571" y="186" />
+      <point x="599" y="184" />
+      <point x="597" y="230" />
+      <point x="565" y="230" />
+    </contour>
+  </space>
+  <space id="10" occupied="1">
+    <rotatedRect>
+      <center x="615" y="208" />
+      <size w="44" h="32" />
+      <angle d="-85" />
+    </rotatedRect>
+    <contour>
+      <point x="603" y="186" />
+      <point x="634" y="188" />
+      <point x="631" y="227" />
+      <point x="598" y="230" />
+    </contour>
+  </space>
+  <space id="11" occupied="1">
+    <rotatedRect>
+      <center x="649" y="206" />
+      <size w="37" h="32" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="634" y="187" />
+      <point x="664" y="188" />
+      <point x="664" y="226" />
+      <point x="632" y="224" />
+    </contour>
+  </space>
+  <space id="12" occupied="1">
+    <rotatedRect>
+      <center x="683" y="206" />
+      <size w="39" h="34" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="669" y="186" />
+      <point x="699" y="188" />
+      <point x="699" y="227" />
+      <point x="665" y="225" />
+    </contour>
+  </space>
+  <space id="13" occupied="0">
+    <rotatedRect>
+      <center x="718" y="203" />
+      <size w="32" h="38" />
+      <angle d="0" />
+    </rotatedRect>
+    <contour>
+      <point x="705" y="184" />
+      <point x="734" y="185" />
+      <point x="734" y="222" />
+      <point x="702" y="222" />
+    </contour>
+  </space>
+  <space id="14" occupied="1">
+    <rotatedRect>
+      <center x="753" y="203" />
+      <size w="43" h="36" />
+      <angle d="-88" />
+    </rotatedRect>
+    <contour>
+      <point x="736" y="182" />
+      <point x="772" y="183" />
+      <point x="769" y="223" />
+      <point x="735" y="225" />
+    </contour>
+  </space>
+  <space id="15" occupied="0">
+    <rotatedRect>
+      <center x="791" y="203" />
+      <size w="32" h="43" />
+      <angle d="0" />
+    </rotatedRect>
+    <contour>
+      <point x="775" y="183" />
+      <point x="807" y="182" />
+      <point x="805" y="225" />
+      <point x="775" y="225" />
+    </contour>
+  </space>
+  <space id="16" occupied="1">
+    <rotatedRect>
+      <center x="824" y="202" />
+      <size w="32" h="40" />
+      <angle d="-3" />
+    </rotatedRect>
+    <contour>
+      <point x="807" y="183" />
+      <point x="840" y="185" />
+      <point x="842" y="222" />
+      <point x="812" y="220" />
+    </contour>
+  </space>
+  <space id="17" occupied="0">
+    <rotatedRect>
+      <center x="862" y="201" />
+      <size w="34" h="39" />
+      <angle d="-2" />
+    </rotatedRect>
+    <contour>
+      <point x="844" y="183" />
+      <point x="879" y="188" />
+      <point x="876" y="219" />
+      <point x="846" y="222" />
+    </contour>
+  </space>
+  <space id="18" occupied="0">
+    <rotatedRect>
+      <center x="898" y="200" />
+      <size w="35" h="36" />
+      <angle d="-1" />
+    </rotatedRect>
+    <contour>
+      <point x="880" y="183" />
+      <point x="915" y="182" />
+      <point x="915" y="219" />
+      <point x="886" y="219" />
+    </contour>
+  </space>
+  <space id="19" occupied="0">
+    <rotatedRect>
+      <center x="936" y="202" />
+      <size w="38" h="40" />
+      <angle d="-1" />
+    </rotatedRect>
+    <contour>
+      <point x="918" y="183" />
+      <point x="955" y="182" />
+      <point x="956" y="222" />
+      <point x="917" y="222" />
+    </contour>
+  </space>
+  <space id="20" occupied="0">
+    <rotatedRect>
+      <center x="974" y="200" />
+      <size w="32" h="46" />
+      <angle d="-3" />
+    </rotatedRect>
+    <contour>
+      <point x="956" y="178" />
+      <point x="989" y="177" />
+      <point x="992" y="222" />
+      <point x="962" y="222" />
+    </contour>
+  </space>
+  <space id="21" occupied="0">
+    <rotatedRect>
+      <center x="1007" y="199" />
+      <size w="34" h="43" />
+      <angle d="-7" />
+    </rotatedRect>
+    <contour>
+      <point x="987" y="180" />
+      <point x="1022" y="181" />
+      <point x="1027" y="219" />
+      <point x="993" y="218" />
+    </contour>
+  </space>
+  <space id="22" occupied="0">
+    <rotatedRect>
+      <center x="1045" y="199" />
+      <size w="38" h="48" />
+      <angle d="-9" />
+    </rotatedRect>
+    <contour>
+      <point x="1022" y="178" />
+      <point x="1057" y="175" />
+      <point x="1068" y="220" />
+      <point x="1029" y="220" />
+    </contour>
+  </space>
+  <space id="23" occupied="1">
+    <rotatedRect>
+      <center x="253" y="287" />
+      <size w="57" h="34" />
+      <angle d="-66" />
+    </rotatedRect>
+    <contour>
+      <point x="226" y="307" />
+      <point x="243" y="267" />
+      <point x="280" y="268" />
+      <point x="260" y="310" />
+    </contour>
+  </space>
+  <space id="24" occupied="1">
+    <rotatedRect>
+      <center x="285" y="290" />
+      <size w="57" h="33" />
+      <angle d="-67" />
+    </rotatedRect>
+    <contour>
+      <point x="259" y="310" />
+      <point x="278" y="265" />
+      <point x="312" y="270" />
+      <point x="296" y="306" />
+    </contour>
+  </space>
+  <space id="25" occupied="1">
+    <rotatedRect>
+      <center x="319" y="286" />
+      <size w="49" h="35" />
+      <angle d="-72" />
+    </rotatedRect>
+    <contour>
+      <point x="295" y="304" />
+      <point x="312" y="266" />
+      <point x="344" y="268" />
+      <point x="330" y="312" />
+    </contour>
+  </space>
+  <space id="26" occupied="0">
+    <rotatedRect>
+      <center x="360" y="290" />
+      <size w="52" h="38" />
+      <angle d="-74" />
+    </rotatedRect>
+    <contour>
+      <point x="335" y="310" />
+      <point x="347" y="268" />
+      <point x="386" y="270" />
+      <point x="371" y="310" />
+    </contour>
+  </space>
+  <space id="27" occupied="1">
+    <rotatedRect>
+      <center x="400" y="288" />
+      <size w="46" h="36" />
+      <angle d="-75" />
+    </rotatedRect>
+    <contour>
+      <point x="377" y="306" />
+      <point x="387" y="268" />
+      <point x="424" y="270" />
+      <point x="406" y="312" />
+    </contour>
+  </space>
+  <space id="28" occupied="1">
+    <rotatedRect>
+      <center x="448" y="287" />
+      <size w="41" h="39" />
+      <angle d="-82" />
+    </rotatedRect>
+    <contour>
+      <point x="426" y="305" />
+      <point x="431" y="269" />
+      <point x="471" y="270" />
+      <point x="460" y="310" />
+    </contour>
+  </space>
+  <space id="29" occupied="1">
+    <rotatedRect>
+      <center x="480" y="288" />
+      <size w="44" h="40" />
+      <angle d="-83" />
+    </rotatedRect>
+    <contour>
+      <point x="458" y="308" />
+      <point x="471" y="267" />
+      <point x="503" y="269" />
+      <point x="498" y="311" />
+    </contour>
+  </space>
+  <space id="30" occupied="1">
+    <rotatedRect>
+      <center x="524" y="284" />
+      <size w="47" h="35" />
+      <angle d="-80" />
+    </rotatedRect>
+    <contour>
+      <point x="503" y="305" />
+      <point x="510" y="264" />
+      <point x="546" y="264" />
+      <point x="537" y="306" />
+    </contour>
+  </space>
+  <space id="31" occupied="1">
+    <rotatedRect>
+      <center x="558" y="288" />
+      <size w="42" h="38" />
+      <angle d="-83" />
+    </rotatedRect>
+    <contour>
+      <point x="537" y="307" />
+      <point x="542" y="266" />
+      <point x="580" y="269" />
+      <point x="573" y="304" />
+    </contour>
+  </space>
+  <space id="32" occupied="1">
+    <rotatedRect>
+      <center x="595" y="284" />
+      <size w="47" h="39" />
+      <angle d="-82" />
+    </rotatedRect>
+    <contour>
+      <point x="573" y="305" />
+      <point x="578" y="266" />
+      <point x="618" y="263" />
+      <point x="611" y="308" />
+    </contour>
+  </space>
+  <space id="33" occupied="1">
+    <rotatedRect>
+      <center x="634" y="284" />
+      <size w="47" h="35" />
+      <angle d="-83" />
+    </rotatedRect>
+    <contour>
+      <point x="614" y="306" />
+      <point x="619" y="263" />
+      <point x="655" y="263" />
+      <point x="650" y="307" />
+    </contour>
+  </space>
+  <space id="34" occupied="1">
+    <rotatedRect>
+      <center x="668" y="285" />
+      <size w="43" h="38" />
+      <angle d="-88" />
+    </rotatedRect>
+    <contour>
+      <point x="648" y="307" />
+      <point x="653" y="266" />
+      <point x="688" y="264" />
+      <point x="687" y="307" />
+    </contour>
+  </space>
+  <space id="35" occupied="0">
+    <rotatedRect>
+      <center x="709" y="285" />
+      <size w="49" h="37" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="689" y="309" />
+      <point x="692" y="260" />
+      <point x="726" y="262" />
+      <point x="727" y="307" />
+    </contour>
+  </space>
+  <space id="36" occupied="1">
+    <rotatedRect>
+      <center x="746" y="285" />
+      <size w="43" h="37" />
+      <angle d="-88" />
+    </rotatedRect>
+    <contour>
+      <point x="728" y="305" />
+      <point x="731" y="265" />
+      <point x="766" y="264" />
+      <point x="765" y="307" />
+    </contour>
+  </space>
+  <space id="37" occupied="1">
+    <rotatedRect>
+      <center x="785" y="282" />
+      <size w="47" h="40" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="763" y="305" />
+      <point x="766" y="261" />
+      <point x="807" y="260" />
+      <point x="804" y="306" />
+    </contour>
+  </space>
+  <space id="38" occupied="1">
+    <rotatedRect>
+      <center x="827" y="280" />
+      <size w="39" h="50" />
+      <angle d="-2" />
+    </rotatedRect>
+    <contour>
+      <point x="809" y="306" />
+      <point x="809" y="261" />
+      <point x="846" y="254" />
+      <point x="848" y="303" />
+    </contour>
+  </space>
+  <space id="39" occupied="1">
+    <rotatedRect>
+      <center x="869" y="283" />
+      <size w="40" h="53" />
+      <angle d="0" />
+    </rotatedRect>
+    <contour>
+      <point x="849" y="305" />
+      <point x="850" y="257" />
+      <point x="885" y="257" />
+      <point x="889" y="310" />
+    </contour>
+  </space>
+  <space id="40" occupied="0">
+    <rotatedRect>
+      <center x="907" y="282" />
+      <size w="42" h="52" />
+      <angle d="-5" />
+    </rotatedRect>
+    <contour>
+      <point x="888" y="307" />
+      <point x="885" y="258" />
+      <point x="925" y="254" />
+      <point x="931" y="306" />
+    </contour>
+  </space>
+  <space id="41" occupied="0">
+    <rotatedRect>
+      <center x="948" y="282" />
+      <size w="37" h="48" />
+      <angle d="-4" />
+    </rotatedRect>
+    <contour>
+      <point x="932" y="307" />
+      <point x="928" y="261" />
+      <point x="960" y="257" />
+      <point x="969" y="305" />
+    </contour>
+  </space>
+  <space id="42" occupied="0">
+    <rotatedRect>
+      <center x="989" y="281" />
+      <size w="43" h="49" />
+      <angle d="-7" />
+    </rotatedRect>
+    <contour>
+      <point x="971" y="309" />
+      <point x="966" y="261" />
+      <point x="1001" y="255" />
+      <point x="1014" y="303" />
+    </contour>
+  </space>
+  <space id="43" occupied="0">
+    <rotatedRect>
+      <center x="1032" y="281" />
+      <size w="37" h="50" />
+      <angle d="-6" />
+    </rotatedRect>
+    <contour>
+      <point x="1017" y="307" />
+      <point x="1011" y="258" />
+      <point x="1042" y="256" />
+      <point x="1054" y="304" />
+    </contour>
+  </space>
+  <space id="44" occupied="0">
+    <rotatedRect>
+      <center x="1074" y="282" />
+      <size w="42" h="51" />
+      <angle d="-5" />
+    </rotatedRect>
+    <contour>
+      <point x="1055" y="303" />
+      <point x="1051" y="259" />
+      <point x="1083" y="258" />
+      <point x="1098" y="306" />
+    </contour>
+  </space>
+  <space id="45" occupied="1">
+    <rotatedRect>
+      <center x="225" y="335" />
+      <size w="59" h="37" />
+      <angle d="-79" />
+    </rotatedRect>
+    <contour>
+      <point x="202" y="361" />
+      <point x="218" y="304" />
+      <point x="249" y="309" />
+      <point x="240" y="359" />
+    </contour>
+  </space>
+  <space id="46" occupied="1">
+    <rotatedRect>
+      <center x="262" y="333" />
+      <size w="70" h="39" />
+      <angle d="-74" />
+    </rotatedRect>
+    <contour>
+      <point x="234" y="362" />
+      <point x="253" y="305" />
+      <point x="291" y="305" />
+      <point x="275" y="363" />
+    </contour>
+  </space>
+  <space id="47" occupied="1">
+    <rotatedRect>
+      <center x="297" y="331" />
+      <size w="67" h="37" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="272" y="360" />
+      <point x="285" y="301" />
+      <point x="323" y="302" />
+      <point x="304" y="361" />
+    </contour>
+  </space>
+  <space id="48" occupied="1">
+    <rotatedRect>
+      <center x="333" y="336" />
+      <size w="67" h="37" />
+      <angle d="-76" />
+    </rotatedRect>
+    <contour>
+      <point x="307" y="365" />
+      <point x="322" y="308" />
+      <point x="359" y="308" />
+      <point x="346" y="364" />
+    </contour>
+  </space>
+  <space id="49" occupied="1">
+    <rotatedRect>
+      <center x="372" y="335" />
+      <size w="65" h="36" />
+      <angle d="-80" />
+    </rotatedRect>
+    <contour>
+      <point x="349" y="364" />
+      <point x="359" y="306" />
+      <point x="396" y="306" />
+      <point x="383" y="362" />
+    </contour>
+  </space>
+  <space id="50" occupied="1">
+    <rotatedRect>
+      <center x="429" y="336" />
+      <size w="61" h="32" />
+      <angle d="-83" />
+    </rotatedRect>
+    <contour>
+      <point x="410" y="365" />
+      <point x="418" y="307" />
+      <point x="449" y="308" />
+      <point x="442" y="368" />
+    </contour>
+  </space>
+  <space id="51" occupied="1">
+    <rotatedRect>
+      <center x="469" y="337" />
+      <size w="67" h="40" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="443" y="366" />
+      <point x="456" y="306" />
+      <point x="497" y="309" />
+      <point x="482" y="363" />
+    </contour>
+  </space>
+  <space id="52" occupied="1">
+    <rotatedRect>
+      <center x="505" y="336" />
+      <size w="63" h="36" />
+      <angle d="-78" />
+    </rotatedRect>
+    <contour>
+      <point x="481" y="364" />
+      <point x="495" y="310" />
+      <point x="529" y="309" />
+      <point x="518" y="365" />
+    </contour>
+  </space>
+  <space id="53" occupied="1">
+    <rotatedRect>
+      <center x="546" y="336" />
+      <size w="62" h="39" />
+      <angle d="-81" />
+    </rotatedRect>
+    <contour>
+      <point x="535" y="304" />
+      <point x="571" y="308" />
+      <point x="563" y="362" />
+      <point x="523" y="364" />
+    </contour>
+  </space>
+  <space id="54" occupied="1">
+    <rotatedRect>
+      <center x="584" y="337" />
+      <size w="39" h="54" />
+      <angle d="0" />
+    </rotatedRect>
+    <contour>
+      <point x="565" y="364" />
+      <point x="573" y="310" />
+      <point x="604" y="311" />
+      <point x="604" y="363" />
+    </contour>
+  </space>
+  <space id="55" occupied="1">
+    <rotatedRect>
+      <center x="626" y="337" />
+      <size w="53" h="38" />
+      <angle d="-85" />
+    </rotatedRect>
+    <contour>
+      <point x="606" y="362" />
+      <point x="612" y="310" />
+      <point x="648" y="312" />
+      <point x="644" y="364" />
+    </contour>
+  </space>
+  <space id="56" occupied="0">
+    <rotatedRect>
+      <center x="664" y="337" />
+      <size w="42" h="51" />
+      <angle d="0" />
+    </rotatedRect>
+    <contour>
+      <point x="643" y="363" />
+      <point x="650" y="315" />
+      <point x="685" y="312" />
+      <point x="685" y="361" />
+    </contour>
+  </space>
+  <space id="57" occupied="0">
+    <rotatedRect>
+      <center x="706" y="335" />
+      <size w="51" h="32" />
+      <angle d="-88" />
+    </rotatedRect>
+    <contour>
+      <point x="690" y="361" />
+      <point x="691" y="312" />
+      <point x="724" y="310" />
+      <point x="721" y="361" />
+    </contour>
+  </space>
+  <space id="58" occupied="0">
+    <rotatedRect>
+      <center x="746" y="336" />
+      <size w="48" h="39" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="725" y="359" />
+      <point x="728" y="311" />
+      <point x="766" y="315" />
+      <point x="764" y="362" />
+    </contour>
+  </space>
+  <space id="59" occupied="0">
+    <rotatedRect>
+      <center x="785" y="336" />
+      <size w="37" h="51" />
+      <angle d="-1" />
+    </rotatedRect>
+    <contour>
+      <point x="768" y="362" />
+      <point x="767" y="313" />
+      <point x="804" y="310" />
+      <point x="802" y="360" />
+    </contour>
+  </space>
+  <space id="60" occupied="0">
+    <rotatedRect>
+      <center x="829" y="334" />
+      <size w="50" h="40" />
+      <angle d="-87" />
+    </rotatedRect>
+    <contour>
+      <point x="808" y="358" />
+      <point x="810" y="308" />
+      <point x="845" y="310" />
+      <point x="848" y="360" />
+    </contour>
+  </space>
+  <space id="61" occupied="0">
+    <rotatedRect>
+      <center x="871" y="335" />
+      <size w="37" h="51" />
+      <angle d="-3" />
+    </rotatedRect>
+    <contour>
+      <point x="854" y="362" />
+      <point x="851" y="311" />
+      <point x="888" y="312" />
+      <point x="891" y="356" />
+    </contour>
+  </space>
+  <space id="62" occupied="0">
+    <rotatedRect>
+      <center x="910" y="335" />
+      <size w="41" h="46" />
+      <angle d="-6" />
+    </rotatedRect>
+    <contour>
+      <point x="895" y="359" />
+      <point x="888" y="314" />
+      <point x="929" y="311" />
+      <point x="934" y="356" />
+    </contour>
+  </space>
+  <space id="63" occupied="0">
+    <rotatedRect>
+      <center x="954" y="335" />
+      <size w="39" h="49" />
+      <angle d="-6" />
+    </rotatedRect>
+    <contour>
+      <point x="937" y="362" />
+      <point x="934" y="314" />
+      <point x="971" y="309" />
+      <point x="976" y="356" />
+    </contour>
+  </space>
+  <space id="64" occupied="0">
+    <rotatedRect>
+      <center x="997" y="333" />
+      <size w="42" h="55" />
+      <angle d="-7" />
+    </rotatedRect>
+    <contour>
+      <point x="980" y="360" />
+      <point x="972" y="309" />
+      <point x="1015" y="307" />
+      <point x="1022" y="358" />
+    </contour>
+  </space>
+  <space id="65" occupied="0">
+    <rotatedRect>
+      <center x="1039" y="334" />
+      <size w="39" h="50" />
+      <angle d="-7" />
+    </rotatedRect>
+    <contour>
+      <point x="1023" y="360" />
+      <point x="1017" y="312" />
+      <point x="1056" y="311" />
+      <point x="1062" y="357" />
+    </contour>
+  </space>
+  <space id="66" occupied="1">
+    <rotatedRect>
+      <center x="1085" y="335" />
+      <size w="45" h="55" />
+      <angle d="-11" />
+    </rotatedRect>
+    <contour>
+      <point x="1067" y="358" />
+      <point x="1059" y="312" />
+      <point x="1099" y="304" />
+      <point x="1113" y="358" />
+    </contour>
+  </space>
+  <space id="67" occupied="1">
+    <rotatedRect>
+      <center x="156" y="442" />
+      <size w="68" h="39" />
+      <angle d="-72" />
+    </rotatedRect>
+    <contour>
+      <point x="127" y="470" />
+      <point x="150" y="413" />
+      <point x="185" y="416" />
+      <point x="167" y="473" />
+    </contour>
+  </space>
+  <space id="68" occupied="1">
+    <rotatedRect>
+      <center x="193" y="444" />
+      <size w="67" h="43" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="165" y="473" />
+      <point x="184" y="417" />
+      <point x="223" y="417" />
+      <point x="211" y="469" />
+    </contour>
+  </space>
+  <space id="69" occupied="1">
+    <rotatedRect>
+      <center x="239" y="445" />
+      <size w="66" h="44" />
+      <angle d="-78" />
+    </rotatedRect>
+    <contour>
+      <point x="211" y="474" />
+      <point x="222" y="418" />
+      <point x="268" y="417" />
+      <point x="253" y="473" />
+    </contour>
+  </space>
+  <space id="70" occupied="1">
+    <rotatedRect>
+      <center x="280" y="443" />
+      <size w="65" h="40" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="254" y="472" />
+      <point x="266" y="416" />
+      <point x="307" y="416" />
+      <point x="295" y="470" />
+    </contour>
+  </space>
+  <space id="71" occupied="1">
+    <rotatedRect>
+      <center x="321" y="447" />
+      <size w="63" h="41" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="295" y="474" />
+      <point x="306" y="424" />
+      <point x="349" y="421" />
+      <point x="327" y="475" />
+    </contour>
+  </space>
+  <space id="72" occupied="1">
+    <rotatedRect>
+      <center x="386" y="445" />
+      <size w="58" h="40" />
+      <angle d="-79" />
+    </rotatedRect>
+    <contour>
+      <point x="362" y="471" />
+      <point x="371" y="420" />
+      <point x="412" y="420" />
+      <point x="400" y="471" />
+    </contour>
+  </space>
+  <space id="73" occupied="1">
+    <rotatedRect>
+      <center x="431" y="444" />
+      <size w="58" h="48" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="405" y="472" />
+      <point x="408" y="420" />
+      <point x="457" y="416" />
+      <point x="447" y="471" />
+    </contour>
+  </space>
+  <space id="74" occupied="0">
+    <rotatedRect>
+      <center x="477" y="444" />
+      <size w="64" h="49" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="446" y="471" />
+      <point x="458" y="416" />
+      <point x="508" y="418" />
+      <point x="490" y="477" />
+    </contour>
+  </space>
+  <space id="75" occupied="1">
+    <rotatedRect>
+      <center x="518" y="445" />
+      <size w="62" h="42" />
+      <angle d="-80" />
+    </rotatedRect>
+    <contour>
+      <point x="492" y="472" />
+      <point x="509" y="418" />
+      <point x="545" y="418" />
+      <point x="535" y="475" />
+    </contour>
+  </space>
+  <space id="76" occupied="1">
+    <rotatedRect>
+      <center x="561" y="449" />
+      <size w="63" h="45" />
+      <angle d="-83" />
+    </rotatedRect>
+    <contour>
+      <point x="535" y="478" />
+      <point x="542" y="420" />
+      <point x="588" y="420" />
+      <point x="578" y="472" />
+    </contour>
+  </space>
+  <space id="77" occupied="1">
+    <rotatedRect>
+      <center x="603" y="448" />
+      <size w="58" h="44" />
+      <angle d="-88" />
+    </rotatedRect>
+    <contour>
+      <point x="580" y="477" />
+      <point x="584" y="422" />
+      <point x="626" y="419" />
+      <point x="625" y="476" />
+    </contour>
+  </space>
+  <space id="78" occupied="0">
+    <rotatedRect>
+      <center x="648" y="449" />
+      <size w="67" h="40" />
+      <angle d="-84" />
+    </rotatedRect>
+    <contour>
+      <point x="625" y="481" />
+      <point x="631" y="425" />
+      <point x="672" y="418" />
+      <point x="667" y="471" />
+    </contour>
+  </space>
+  <space id="79" occupied="1">
+    <rotatedRect>
+      <center x="693" y="448" />
+      <size w="56" h="46" />
+      <angle d="-87" />
+    </rotatedRect>
+    <contour>
+      <point x="669" y="475" />
+      <point x="674" y="419" />
+      <point x="717" y="421" />
+      <point x="716" y="470" />
+    </contour>
+  </space>
+  <space id="80" occupied="0">
+    <rotatedRect>
+      <center x="741" y="447" />
+      <size w="43" h="61" />
+      <angle d="-2" />
+    </rotatedRect>
+    <contour>
+      <point x="721" y="479" />
+      <point x="718" y="418" />
+      <point x="761" y="417" />
+      <point x="764" y="472" />
+    </contour>
+  </space>
+  <space id="81" occupied="1">
+    <rotatedRect>
+      <center x="786" y="446" />
+      <size w="46" h="59" />
+      <angle d="0" />
+    </rotatedRect>
+    <contour>
+      <point x="764" y="475" />
+      <point x="763" y="422" />
+      <point x="809" y="417" />
+      <point x="809" y="476" />
+    </contour>
+  </space>
+  <space id="82" occupied="1">
+    <rotatedRect>
+      <center x="833" y="451" />
+      <size w="46" h="59" />
+      <angle d="-2" />
+    </rotatedRect>
+    <contour>
+      <point x="811" y="477" />
+      <point x="811" y="423" />
+      <point x="853" y="421" />
+      <point x="858" y="480" />
+    </contour>
+  </space>
+  <space id="83" occupied="0">
+    <rotatedRect>
+      <center x="882" y="451" />
+      <size w="45" h="62" />
+      <angle d="-6" />
+    </rotatedRect>
+    <contour>
+      <point x="863" y="482" />
+      <point x="856" y="423" />
+      <point x="899" y="422" />
+      <point x="909" y="480" />
+    </contour>
+  </space>
+  <space id="84" occupied="0">
+    <rotatedRect>
+      <center x="930" y="452" />
+      <size w="47" h="59" />
+      <angle d="-6" />
+    </rotatedRect>
+    <contour>
+      <point x="909" y="480" />
+      <point x="903" y="425" />
+      <point x="946" y="421" />
+      <point x="957" y="479" />
+    </contour>
+  </space>
+  <space id="85" occupied="0">
+    <rotatedRect>
+      <center x="976" y="452" />
+      <size w="46" h="65" />
+      <angle d="-7" />
+    </rotatedRect>
+    <contour>
+      <point x="956" y="476" />
+      <point x="952" y="423" />
+      <point x="990" y="418" />
+      <point x="1004" y="482" />
+    </contour>
+  </space>
+  <space id="86" occupied="0">
+    <rotatedRect>
+      <center x="1025" y="450" />
+      <size w="45" h="69" />
+      <angle d="-10" />
+    </rotatedRect>
+    <contour>
+      <point x="1009" y="485" />
+      <point x="997" y="420" />
+      <point x="1037" y="419" />
+      <point x="1054" y="480" />
+    </contour>
+  </space>
+  <space id="87" occupied="0">
+    <rotatedRect>
+      <center x="1071" y="451" />
+      <size w="40" h="68" />
+      <angle d="-11" />
+    </rotatedRect>
+    <contour>
+      <point x="1056" y="476" />
+      <point x="1045" y="422" />
+      <point x="1080" y="417" />
+      <point x="1098" y="481" />
+    </contour>
+  </space>
+  <space id="88" occupied="1">
+    <rotatedRect>
+      <center x="1120" y="452" />
+      <size w="46" h="67" />
+      <angle d="-14" />
+    </rotatedRect>
+    <contour>
+      <point x="1102" y="475" />
+      <point x="1089" y="426" />
+      <point x="1128" y="416" />
+      <point x="1151" y="479" />
+    </contour>
+  </space>
+  <space id="89" occupied="0">
+    <rotatedRect>
+      <center x="75" y="530" />
+      <size w="75" h="36" />
+      <angle d="-61" />
+    </rotatedRect>
+    <contour>
+      <point x="42" y="555" />
+      <point x="71" y="501" />
+      <point x="110" y="506" />
+      <point x="83" y="555" />
+    </contour>
+  </space>
+  <space id="90" occupied="0">
+    <rotatedRect>
+      <center x="122" y="530" />
+      <size w="73" h="52" />
+      <angle d="-73" />
+    </rotatedRect>
+    <contour>
+      <point x="87" y="558" />
+      <point x="109" y="500" />
+      <point x="158" y="502" />
+      <point x="141" y="561" />
+    </contour>
+  </space>
+  <space id="91" occupied="0">
+    <rotatedRect>
+      <center x="175" y="530" />
+      <size w="75" h="49" />
+      <angle d="-72" />
+    </rotatedRect>
+    <contour>
+      <point x="141" y="559" />
+      <point x="162" y="501" />
+      <point x="211" y="501" />
+      <point x="192" y="563" />
+    </contour>
+  </space>
+  <space id="92" occupied="0">
+    <rotatedRect>
+      <center x="226" y="532" />
+      <size w="82" h="54" />
+      <angle d="-73" />
+    </rotatedRect>
+    <contour>
+      <point x="188" y="564" />
+      <point x="207" y="500" />
+      <point x="264" y="501" />
+      <point x="242" y="558" />
+    </contour>
+  </space>
+  <space id="93" occupied="0">
+    <rotatedRect>
+      <center x="280" y="528" />
+      <size w="68" h="54" />
+      <angle d="-76" />
+    </rotatedRect>
+    <contour>
+      <point x="246" y="555" />
+      <point x="260" y="497" />
+      <point x="315" y="501" />
+      <point x="298" y="564" />
+    </contour>
+  </space>
+  <space id="94" occupied="1">
+    <rotatedRect>
+      <center x="329" y="529" />
+      <size w="71" h="56" />
+      <angle d="-80" />
+    </rotatedRect>
+    <contour>
+      <point x="295" y="560" />
+      <point x="311" y="503" />
+      <point x="363" y="499" />
+      <point x="352" y="562" />
+    </contour>
+  </space>
+  <space id="95" occupied="0">
+    <rotatedRect>
+      <center x="384" y="529" />
+      <size w="69" h="54" />
+      <angle d="-78" />
+    </rotatedRect>
+    <contour>
+      <point x="351" y="558" />
+      <point x="362" y="503" />
+      <point x="418" y="501" />
+      <point x="406" y="558" />
+    </contour>
+  </space>
+  <space id="96" occupied="0">
+    <rotatedRect>
+      <center x="441" y="530" />
+      <size w="67" h="53" />
+      <angle d="-77" />
+    </rotatedRect>
+    <contour>
+      <point x="408" y="558" />
+      <point x="419" y="509" />
+      <point x="475" y="504" />
+      <point x="460" y="561" />
+    </contour>
+  </space>
+  <space id="97" occupied="0">
+    <rotatedRect>
+      <center x="494" y="537" />
+      <size w="70" h="54" />
+      <angle d="-79" />
+    </rotatedRect>
+    <contour>
+      <point x="461" y="567" />
+      <point x="473" y="510" />
+      <point x="527" y="507" />
+      <point x="517" y="563" />
+    </contour>
+  </space>
+  <space id="98" occupied="0">
+    <rotatedRect>
+      <center x="549" y="534" />
+      <size w="64" h="55" />
+      <angle d="-82" />
+    </rotatedRect>
+    <contour>
+      <point x="518" y="563" />
+      <point x="526" y="504" />
+      <point x="581" y="506" />
+      <point x="574" y="561" />
+    </contour>
+  </space>
+  <space id="99" occupied="0">
+    <rotatedRect>
+      <center x="602" y="536" />
+      <size w="64" h="47" />
+      <angle d="-85" />
+    </rotatedRect>
+    <contour>
+      <point x="576" y="566" />
+      <point x="581" y="505" />
+      <point x="629" y="506" />
+      <point x="624" y="567" />
+    </contour>
+  </space>
+  <space id="100" occupied="0">
+    <rotatedRect>
+      <center x="653" y="538" />
+      <size w="65" h="54" />
+      <angle d="-86" />
+    </rotatedRect>
+    <contour>
+      <point x="624" y="569" />
+      <point x="629" y="509" />
+      <point x="683" y="507" />
+      <point x="679" y="570" />
+    </contour>
+  </space>
+</parking>
