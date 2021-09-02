@@ -62,7 +62,7 @@ train.start()
 ```
 
 This will take hours or minutes depending on your hardware (Training on an 12 thread, i7 8750H took 2 days), 
-when finished it will generate a file named 'model3.h5'. If you want you can download my trained model and save it in the
+when finished it will generate a file named 'model.h5'. If you want you can download my trained model and save it in the
 content root: 
 https://drive.google.com/file/d/1ubyPzxLrnnSU6aR1Tmo8UcY2Wo4kDmIK/view?usp=sharing
 

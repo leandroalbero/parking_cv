@@ -6,7 +6,7 @@ import numpy as np
 
 def predict_patch(path, model=None):
     if model is None:
-        model = tensorflow.keras.models.load_model('model3.h5')
+        model = tensorflow.keras.models.load_model('model.h5')
     im = Image.open(path)
     im = im.resize((150, 150))
     im = np.expand_dims(im, axis=0)
@@ -17,7 +17,7 @@ def predict_patch(path, model=None):
 
 def predict_image(path, model=None):
     if model is None:
-        model = tensorflow.keras.models.load_model('model3.h5')
+        model = tensorflow.keras.models.load_model('model.h5')
     files = os.listdir(path)
     predictions = {}
     for file in files:

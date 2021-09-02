@@ -278,7 +278,7 @@ def main():
         traverse_and_segment(args.raw_dataset)
     elif args.mode == "create":
         p1 = Parking(args.parking, image=args.image)
-        #p1.save_state(args.parking)
+        # p1.save_state(args.parking)
 
 
 if __name__ == "__main__":
