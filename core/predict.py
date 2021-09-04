@@ -17,7 +17,8 @@ def predict_patch(path, model=None):
 
 def predict_image(path, model=None):
     if model is None:
-        model = tensorflow.keras.models.load_model('model.h5')
+        model = tensorflow.keras.models.load_model('/Users/leandroalbero/PycharmProjects/parking_cv/core/model.h5')
+    os.makedirs(path, exist_ok=True)
     files = os.listdir(path)
     predictions = {}
     for file in files:

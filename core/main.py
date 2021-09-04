@@ -4,8 +4,8 @@ import cv2
 import numpy as np
 import csv
 import xml.etree.ElementTree as et
-import train
-import predict
+import core.train as train
+import core.predict as predict
 
 
 class Parking:
