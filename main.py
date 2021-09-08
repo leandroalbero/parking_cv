@@ -92,6 +92,7 @@ class Parking:
     def extract_patches(self, _img, plazas, savename=None, folder=None):
         if folder is None:
             path_to_folder = "temp/"
+            os.makedirs(path_to_folder, exist_ok=True)
             for root, dirs, files in os.walk(path_to_folder):
                 for file in files:
                     os.remove(os.path.join(root, file))
@@ -140,6 +141,7 @@ class Parking:
         self.image = route_to_img
         img = cv2.imread(route_to_img, 1)
         self.extract_patches(img, self.plazas, savename=self.id)
+        os.makedirs("temp/", exist_ok=True)
         results = predict.predict_image("temp/")
         header = list(results.keys())[0].split('_')[0]
         for plaza in self.plazas:

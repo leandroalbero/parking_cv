@@ -36,11 +36,11 @@ python3 main.py --mode train
 ```
 Load a parking lot image and infer its status
 ```
-python3 main.py --mode image --image PKLot/PKLot/UFPR05/Rainy/2013-04-12/2013-04-12_17_40_12.jpg --parking PKLot/PKLot/UFPR05/Sunny/2013-03-12/2013-03-12_07_30_01.xml
+python3 main.py --mode image --image samples/2012-10-31_07_43_02.jpg --parking samples/2012-10-31_07_43_02.xml
 ```
 Create a new parking lot from an image and set its parking spot coordinates
 ```
-python3 main.py --mode create --image PKLot/PKLot/PUCPR/Cloudy/2012-09-12/2012-09-12_06_05_16.jpg --parking demo1.xml
+python3 main.py --mode create --image samples/2012-10-31_07_43_02.jpg --parking demo1.xml
 ```
 
 ## How to train the DNN
